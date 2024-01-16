@@ -1,4 +1,4 @@
-import { DataSource, DatabaseType } from "typeorm";
+import { DatabaseType, DataSource } from "typeorm";
 import Url from "@/models/urls";
 
 const progresDatabase: DatabaseType = "postgres";

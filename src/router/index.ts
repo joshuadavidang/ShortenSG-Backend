@@ -1,9 +1,9 @@
-import Router from "koa-router";
 import {
-  longUrlExist,
   generateShortUrl,
+  longUrlExist,
   redirectToLongURL,
 } from "@/controllers";
+import Router from "koa-router";
 
 const router = new Router();
 

@@ -1,6 +1,6 @@
-import Url from "@/models/urls";
 import { AppDataSource } from "@/config";
 import { DATA } from "@/type";
+import Url from "@/models/urls";
 
 const longUrlExist = async (ctx: any) => {
   try {

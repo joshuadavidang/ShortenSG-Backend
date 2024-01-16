@@ -1,9 +1,9 @@
+import cors from "@koa/cors";
+import dotenv from "dotenv";
 import Koa from "koa";
 import parser from "koa-bodyparser";
-import cors from "@koa/cors";
 import router from "@/router";
 import "reflect-metadata";
-import dotenv from "dotenv";
 
 dotenv.config();
 

@@ -1,7 +1,7 @@
-import Url from "@/models/urls";
-import { AppDataSource } from "@/config";
 import { API_STATUS } from "@/type";
+import { AppDataSource } from "@/config";
 import { nanoid } from "nanoid";
+import Url from "@/models/urls";
 
 const generateShortUrl = async (ctx: any) => {
   try {
