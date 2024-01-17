@@ -21,7 +21,22 @@ class UrlService {
   }
 
   /**
-   * Given a short url token, find the original url.
+   * Given an original url, return the url object
+   * @param ogUrl
+   * @returns url object
+   */
+  async findLongUrl(ogUrl: string) {
+    const dataRepository = AppDataSource.getRepository(Url);
+    const result = await dataRepository.findOne({
+      where: {
+        og_url: ogUrl,
+      },
+    });
+    return result;
+  }
+
+  /**
+   * Given a short url token, find the original url using a token
    * @param token
    * @returns the original url
    */

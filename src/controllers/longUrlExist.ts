@@ -1,16 +1,11 @@
-import { AppDataSource } from "@/config";
 import { DATA } from "@/type";
-import Url from "@/models/urls";
+import { UrlService } from "@/services/UrlService";
 
 async function longUrlExist(ctx: any) {
   try {
     const { ogUrl } = ctx.request.body;
-    const dataRepository = AppDataSource.getRepository(Url);
-    const result = await dataRepository.findOne({
-      where: {
-        og_url: ogUrl,
-      },
-    });
+    const urlService = new UrlService();
+    const result = await urlService.findLongUrl(ogUrl);
     ctx.body = {
       status: result ? DATA.AVAILABLE : DATA.UNAVAILABLE,
       message: result
