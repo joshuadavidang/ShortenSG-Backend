@@ -2,7 +2,7 @@ import { AppDataSource } from "@/config";
 import { DATA } from "@/type";
 import Url from "@/models/urls";
 
-const longUrlExist = async (ctx: any) => {
+async function longUrlExist(ctx: any) {
   try {
     const { ogUrl } = ctx.request.body;
     const dataRepository = AppDataSource.getRepository(Url);
@@ -14,8 +14,8 @@ const longUrlExist = async (ctx: any) => {
     ctx.body = {
       status: result ? DATA.AVAILABLE : DATA.UNAVAILABLE,
       message: result
-        ? "Short url exists in database"
-        : "Short url does not exist in database, generating one now.",
+        ? "Long url exists in database"
+        : "Long url does not exist in database, saving it now.",
       result: result ? result : ogUrl,
     };
     ctx.status = 200;
@@ -23,6 +23,6 @@ const longUrlExist = async (ctx: any) => {
     ctx.body = err;
     ctx.status = 500;
   }
-};
+}
 
 export { longUrlExist };

@@ -1,19 +1,12 @@
 import { API_STATUS } from "@/type";
 import { AppDataSource } from "@/config";
-import { nanoid } from "nanoid";
-import Url from "@/models/urls";
+import { UrlService } from "@/services/UrlService";
 
-const generateShortUrl = async (ctx: any) => {
+async function saveUrlToDB(ctx: any) {
   try {
     const { ogUrl } = ctx.request.body;
-    const domain = process.env.DOMAIN;
-    const token = nanoid(5);
-    const newUrl = new Url();
-
-    newUrl.token = token;
-    newUrl.og_url = ogUrl;
-    newUrl.short_url = domain + "/" + token;
-
+    const urlService = new UrlService();
+    const newUrl = urlService.generateUrlObj(ogUrl);
     const result = await AppDataSource.manager.save(newUrl);
     ctx.body = {
       status: API_STATUS.SUCCESS,
@@ -28,6 +21,6 @@ const generateShortUrl = async (ctx: any) => {
     };
     ctx.status = 500;
   }
-};
+}
 
-export { generateShortUrl };
+export { saveUrlToDB };
