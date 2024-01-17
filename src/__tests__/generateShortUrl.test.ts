@@ -1,6 +1,7 @@
 import request from "supertest";
 import { app } from "@/index";
 import { ConnectDatabase } from "@/config";
+import { DATA } from "@/helpers";
 
 describe("Generate Short URL API", () => {
   beforeAll(async () => {
@@ -13,7 +14,7 @@ describe("Generate Short URL API", () => {
       ogUrl,
     });
     const { status } = JSON.parse(urlExist.text);
-    if (status === "Unavailable") {
+    if (status === DATA.UNAVAILABLE) {
       const response = await request(app.callback())
         .post("/sendUrl")
         .send({ ogUrl });
@@ -29,6 +30,6 @@ describe("Generate Short URL API", () => {
       ogUrl,
     });
     const { status } = JSON.parse(urlExist.text);
-    expect(status).toBe("Available");
+    expect(status).toBe(DATA.AVAILABLE);
   });
 });

@@ -17,7 +17,6 @@ const AppDataSource = new DataSource({
 async function ConnectDatabase() {
   try {
     await AppDataSource.initialize();
-    console.log("Connected to database");
   } catch (err) {
     console.log(err);
   }

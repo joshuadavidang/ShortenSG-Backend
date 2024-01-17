@@ -1,4 +1,4 @@
-import { API_STATUS } from "@/type";
+import { API_STATUS } from "@/helpers";
 import { AppDataSource } from "@/config";
 import { UrlService } from "@/services/UrlService";
 

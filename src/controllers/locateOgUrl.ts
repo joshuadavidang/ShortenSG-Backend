@@ -1,7 +1,7 @@
-import { DATA } from "@/type";
+import { DATA } from "@/helpers";
 import { UrlService } from "@/services/UrlService";
 
-async function longUrlExist(ctx: any) {
+async function locateOgUrl(ctx: any) {
   try {
     const { ogUrl } = ctx.request.body;
     const urlService = new UrlService();
@@ -20,4 +20,4 @@ async function longUrlExist(ctx: any) {
   }
 }
 
-export { longUrlExist };
+export { locateOgUrl };

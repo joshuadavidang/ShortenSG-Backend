@@ -21,7 +21,7 @@ class UrlService {
   }
 
   /**
-   * Given an original url, return the url object
+   * Given an original url, retrieve the data from database and return the result
    * @param ogUrl
    * @returns url object
    */
@@ -36,7 +36,7 @@ class UrlService {
   }
 
   /**
-   * Given a short url token, find the original url using a token
+   * Given a short url token, retrieve the data from database and return the original url
    * @param token
    * @returns the original url
    */

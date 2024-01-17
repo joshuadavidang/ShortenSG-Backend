@@ -1,3 +1,3 @@
 export * from "./saveUrlToDB";
-export * from "./longUrlExist";
+export * from "./locateOgUrl";
 export * from "./redirectToLongURL";
