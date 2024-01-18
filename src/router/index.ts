@@ -9,7 +9,7 @@ router.get("/", async (ctx) => {
 
 router.get("/:token", redirectToLongURL);
 
-router.post("/isExist", locateOgUrl);
+router.post("/urlIsExist", locateOgUrl);
 router.post("/sendUrl", saveUrlToDB);
 
 export default router;
