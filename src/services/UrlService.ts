@@ -3,12 +3,7 @@ import { nanoid } from "nanoid";
 import Url from "@/models/urls";
 
 class UrlService {
-  /**
-   * Given an original url, generate a new url object that has token, the original url and short url
-   * @param ogUrl
-   * @returns a new url object
-   */
-  generateUrlObj(ogUrl: string) {
+  public generateUrlObj(ogUrl: string) {
     const domain = process.env.DOMAIN;
     const token = nanoid(5);
     const urlObj = new Url();
@@ -20,12 +15,12 @@ class UrlService {
     return urlObj;
   }
 
-  /**
-   * Given an original url, retrieve the data from database and return the result
-   * @param ogUrl
-   * @returns url object
-   */
-  async findLongUrl(ogUrl: string) {
+  public async saveToDatabase(ogUrl: string) {
+    const newUrlObj = this.generateUrlObj(ogUrl);
+    return AppDataSource.manager.save(newUrlObj);
+  }
+
+  public async findLongUrl(ogUrl: string) {
     const dataRepository = AppDataSource.getRepository(Url);
     const result = await dataRepository.findOne({
       where: {
@@ -35,12 +30,7 @@ class UrlService {
     return result;
   }
 
-  /**
-   * Given a short url token, retrieve the data from database and return the original url
-   * @param token
-   * @returns the original url
-   */
-  async findOgUrl(token: string) {
+  public async findOgUrl(token: string) {
     const dataRepository = AppDataSource.getRepository(Url);
     const result = await dataRepository.findOne({
       where: {

@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server listening localhost:${PORT} 🚀`);
+  console.log(`🚀 Server listening on localhost:${PORT} 🚀`);
 });
 
 ConnectDatabase();

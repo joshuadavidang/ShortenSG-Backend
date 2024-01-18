@@ -10,7 +10,7 @@ describe("Generate Short URL API", () => {
 
   test("Should generate a short url if long url does not exist in database", async () => {
     const ogUrl = "https://www.crowdtask.gov.sg/quest/budget-meal/infobites";
-    const urlExist = await request(app.callback()).post("/isExist").send({
+    const urlExist = await request(app.callback()).post("/urlIsExist").send({
       ogUrl,
     });
     const { status } = JSON.parse(urlExist.text);
@@ -26,7 +26,7 @@ describe("Generate Short URL API", () => {
 
   test("Should not generate a short url if the long url exists in database", async () => {
     const ogUrl = "https://www.crowdtask.gov.sg/quest/budget-meal/infobites";
-    const urlExist = await request(app.callback()).post("/isExist").send({
+    const urlExist = await request(app.callback()).post("/urlIsExist").send({
       ogUrl,
     });
     const { status } = JSON.parse(urlExist.text);

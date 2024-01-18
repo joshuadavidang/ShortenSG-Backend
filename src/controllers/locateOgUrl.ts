@@ -6,13 +6,19 @@ async function locateOgUrl(ctx: any) {
     const { ogUrl } = ctx.request.body;
     const urlService = new UrlService();
     const result = await urlService.findLongUrl(ogUrl);
-    ctx.body = {
-      status: result ? DATA.AVAILABLE : DATA.UNAVAILABLE,
-      message: result
-        ? "Long url exists in database"
-        : "Long url does not exist in database, saving it now.",
-      result: result ? result : ogUrl,
-    };
+    if (result) {
+      ctx.body = {
+        status: DATA.AVAILABLE,
+        message: "Long url exists in database",
+        result: result,
+      };
+    } else {
+      ctx.body = {
+        status: DATA.UNAVAILABLE,
+        message: "Long url does not exist in database, saving it now.",
+        result: ogUrl,
+      };
+    }
     ctx.status = 200;
   } catch (err) {
     ctx.body = err;

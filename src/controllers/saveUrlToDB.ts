@@ -1,13 +1,11 @@
 import { API_STATUS } from "@/helpers";
-import { AppDataSource } from "@/config";
 import { UrlService } from "@/services/UrlService";
 
 async function saveUrlToDB(ctx: any) {
   try {
     const { ogUrl } = ctx.request.body;
     const urlService = new UrlService();
-    const newUrl = urlService.generateUrlObj(ogUrl);
-    const result = await AppDataSource.manager.save(newUrl);
+    const result = await urlService.saveToDatabase(ogUrl);
     ctx.body = {
       status: API_STATUS.SUCCESS,
       result: result,
