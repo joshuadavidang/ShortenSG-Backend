@@ -1,8 +1,13 @@
 import { AppDataSource } from "@/config";
+import { isValidUrl } from "@/helpers/isValidUrl";
 import { nanoid } from "nanoid";
 import Url from "@/models/urls";
 
 class UrlService {
+  public validateUrl(ogUrl: string) {
+    return isValidUrl(ogUrl);
+  }
+
   public generateUrlObj(ogUrl: string) {
     const domain = process.env.DOMAIN;
     const token = nanoid(5);
