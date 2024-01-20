@@ -6,7 +6,7 @@ const progresDatabase: DatabaseType = "postgres";
 const AppDataSource = new DataSource({
   type: progresDatabase,
   host: process.env.HOST,
-  port: Number(process.env.PORT),
+  port: Number(process.env.DB_PORT),
   username: process.env.USERNAME,
   password: process.env.PASSWORD,
   database: progresDatabase,
