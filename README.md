@@ -14,7 +14,7 @@
 1. Clone the project
 
    ```
-   git clone https://sgts.gitlab-dedicated.com/joshua_david_ang/url-shortener-fe.git
+   git clone https://github.com/joshuadavidang/ShortenSG-Backend.git
    ```
 
 2. Install dependencies
